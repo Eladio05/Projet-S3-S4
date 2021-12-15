@@ -1,2 +1,2 @@
 Voici le readme du jeu manhattan
-test test 
+Ici nous retrouveron les règles du jeu.
