@@ -1,2 +1,2 @@
-Voici le readme du jeu manhattan
-Ici nous retrouveron les règles du jeu.
+Voici le readme du jeu Manhattan.
+Ici vous pourrez retrouvez les règles du jeu.
