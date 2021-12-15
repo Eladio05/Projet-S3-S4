@@ -4,7 +4,10 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		Case c = new Case(0, 0);
-		System.out.println(c.getAbcisse());
+		Quartier q = new Quartier();
+		System.out.println(q);
+		
+		Case c = new Case(2, 2);
+		System.out.println(c.equals(q.getCase(2, 2)));
 	}
 }
