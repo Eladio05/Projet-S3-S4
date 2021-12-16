@@ -1,35 +1,34 @@
 package Model;
+
+import java.util.ArrayList;
+
 public class Case 
 {
-	/*
-	changelog : V1
-	- Creation de la classe
-	*/
-
-
-	private int abcisse;
+	private int abscisse;
 	private int ordonnee;
+	private ArrayList<Bloc> listeBlocs;
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public Case(int abcisse, int ordonnee)
+	public Case(int abscisse, int ordonnee)
 	{
-		this.abcisse = abcisse; 
+		this.abscisse = abscisse; 
 		this.ordonnee = ordonnee;
+		this.listeBlocs = new ArrayList<>();
 	}
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public int getAbcisse()
+	public int getAbscisse()
 	{
-		return this.abcisse;
+		return this.abscisse;
 	}
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public void setAbcisse(int abcisse)
+	public void setAbscisse(int abcisse)
 	{
-		this.abcisse = abcisse;
+		this.abscisse = abcisse;
 	}
 	
 	// -------------------------------------------------------------------------------------------------
@@ -48,30 +47,27 @@ public class Case
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public String toString()
+	public Bloc getListeBlocs()
 	{
-		return "[" + String.valueOf(this.abcisse) + " " + String.valueOf(this.ordonnee) + "]";
+		return this.listeBlocs.get(this.listeBlocs.size() - 1);
 	}
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	
-	public Boolean equals(Case c)
+	public void setListeBlocs(Bloc b)
 	{
-		
-		System.out.println("on passe bien par ici");
-		if (this.abcisse == c.abcisse && this.ordonnee == c.ordonnee)
-		{
-			
-			return true;
-		}
-		else 
-		{
-			
-			return false;
-		}
+		this.listeBlocs.add(b);
 	}
 	
-
+	// -------------------------------------------------------------------------------------------------
 	
+	public String toString()
+	{
+		return "[" + String.valueOf(this.abscisse) + " " + String.valueOf(this.ordonnee) + "]";
+	}
+	
+		
 }
+
+
+ 

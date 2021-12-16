@@ -2,10 +2,7 @@ package Model;
 
 public class Quartier 
 {
-	/*
-	Changelog : V2
-	- Modification du formatage de l'affichage (toString)
-	*/
+	
 	private int nbLignes;
 	private int nbColonnes;
 	private Case[][] listeCases;

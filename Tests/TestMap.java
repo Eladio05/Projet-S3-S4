@@ -11,10 +11,6 @@ import Model.Quartier;
 
 public class TestMap
 {
-    /*
-    Changelog : V1
-    - Creation de la classe
-    */
 	private Map m;
 	private Quartier q;
 	private Case c;

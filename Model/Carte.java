@@ -1,7 +1,10 @@
+package Model;
 
 public class Carte {
 	private int abscisse;
 	private int ordonne;
+	
+	// -------------------------------------------------------------------------------------------------
 	
 	public Carte(int abscisse, int ordonne) {
 		super();
@@ -9,8 +12,7 @@ public class Carte {
 		this.ordonne = ordonne;
 	}
 	
-	
-	
+	// -------------------------------------------------------------------------------------------------
 	
 
 	@Override
@@ -18,22 +20,26 @@ public class Carte {
 		return "Carte abscisse=" + abscisse + ", ordonne=" + ordonne;
 	}
 
-
-
-
+	// -------------------------------------------------------------------------------------------------
 
 	public int getAbscisse() {
 		return abscisse;
 	}
+	
+	// -------------------------------------------------------------------------------------------------
 
 	public void setAbscisse(int abscisse) {
 		this.abscisse = abscisse;
 	}
+	
+	// -------------------------------------------------------------------------------------------------
 
 	public int getOrdonne() {
 		return ordonne;
 	}
 
+	// -------------------------------------------------------------------------------------------------
+	
 	public void setOrdonne(int ordonne) {
 		this.ordonne = ordonne;
 	}
