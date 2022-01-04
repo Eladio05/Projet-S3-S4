@@ -3,11 +3,10 @@ package Model;
 
 public class Map
 {
-	/*
-	Changelog : V1
-	- Creation de la classe
-	*/
+	
 	private Quartier[] listeQuartiers;
+	
+	// ---------------------------------------------------------------------------
 	
 	public Map()
 	{
@@ -19,15 +18,21 @@ public class Map
 		}
 	}
 	
+	// ---------------------------------------------------------------------------
+	
 	public void setQuartier(Quartier q, int numero)
 	{
 		this.listeQuartiers[numero] = q;
 	}
 	
+	// ---------------------------------------------------------------------------
+	
 	public Quartier getQuartier(int numero)
 	{
 		return this.listeQuartiers[numero];
 	}
+	
+	// ---------------------------------------------------------------------------
 	
 	public String toString()
 	{

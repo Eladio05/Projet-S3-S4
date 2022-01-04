@@ -10,10 +10,6 @@ import Model.Quartier;
 
 public class TestQuartier 
 {
-    /*
-    Changelog : V2
-    - Correction de la methode testToString
-    */
 	private Case c;
 	private Quartier q;
 	
