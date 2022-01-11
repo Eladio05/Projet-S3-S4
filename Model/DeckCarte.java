@@ -10,9 +10,30 @@ public class DeckCarte {
 	}
 	
 	public String toString() {
-		for(Carte c : listCarte) {
-			System.out.println("Position X = "+c.getAbscisse()+" Position Y = "+c.getOrdonne());
+		String s = " [ ";
+		for (Carte C : this.listCarte){
+			s += C.toString()+ " ; ";
 		}
-		return "";
+		return s + " ] ";
 	}
+
+	public ArrayList<Carte> getListCarte() {
+		return listCarte;
+	}
+
+	public void setListCarte(ArrayList<Carte> listCarte) {
+		this.listCarte = listCarte;
+	}
+
+	public int getNbCartes() {
+		return nbCartes;
+	}
+
+	public void setNbCartes(int nbCartes) {
+		this.nbCartes = nbCartes;
+	}
+	
+	
+	
+	
 }
