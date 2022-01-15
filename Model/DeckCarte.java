@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 
 public class DeckCarte {
@@ -32,6 +34,8 @@ public class DeckCarte {
 	public void setNbCartes(int nbCartes) {
 		this.nbCartes = nbCartes;
 	}
+	
+
 	
 	
 	

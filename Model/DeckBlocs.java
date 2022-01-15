@@ -71,7 +71,17 @@ public class DeckBlocs
 		this.nbBlocs = this.nbBlocs - 1;
 		this.listeBlocs = tab;
 		return b;
-		
+	}
+	
+	public void ajouterBloc(Bloc b)
+	{
+		Bloc[] tab = new Bloc[this.nbBlocs + 1];
+		for (int i=0 ; i < this.nbBlocs ; i=i+1)
+		{
+			tab[i] = this.listeBlocs[i];
+		}
+		tab[this.nbBlocs] = b;
+		this.nbBlocs = this.nbBlocs + 1;
 	}
 		
 	// ----------------------------------------------------------------------------------------------------------------
