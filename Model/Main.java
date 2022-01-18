@@ -1,28 +1,47 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Main 
 {
 	public static void main(String[] args)
 	{
-		
-		Bloc b1 = new Bloc("Bleu", 3);
-		Bloc b2 = new Bloc("Orange", 2);
-		Case c = new Case(1, 1);
-		
-		c.setListeBlocs(b1);
-		c.setListeBlocs(b2);
-		c.setListeBlocs(b2);
-		
-		System.out.println(c.getListeBlocs());
-		
-		
-		
 		/*
-		Quartier q = new Quartier();
-		System.out.println(q);
-		
-		Case c = new Case(2, 2);
-		System.out.println(c.equals(q.getCase(2, 2)));
+		DeckBlocs db = new DeckBlocs("Orange");
+		Bloc b = new Bloc("Vert", 12);
+		db.ajouterBloc(b);
+		System.out.println(db);
 		*/
+		
+		DeckBlocs db = new DeckBlocs("Vert");
+		
+		Carte c1 = new Carte(0, 0);
+		Carte c2 = new Carte(0, 1);
+		Carte c3 = new Carte(1, 0);
+		Carte c4 = new Carte(1, 1);
+		ArrayList<Carte> lc = new ArrayList<>();
+		lc.add(c1);
+		lc.add(c2);
+		lc.add(c3);
+		lc.add(c4);
+		
+		DeckCarte dc = new DeckCarte(lc);
+	
+		Joueur j = new Joueur("Thomas", dc, db);
+		
+		System.out.println(j);
+		
+		j.jouerCoup(0, 0);
+		System.out.println(j);
+		
+		j.jouerCoup(22, 2);
+		System.out.println(j);
+		
+		j.annulerCoup();
+		System.out.println(j);
+		
+		
+		
+		
 	}
 }

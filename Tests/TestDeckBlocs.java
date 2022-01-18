@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Model.Bloc;
 import Model.DeckBlocs;
 
 public class TestDeckBlocs 
@@ -32,14 +33,33 @@ public class TestDeckBlocs
 	@Test
 	public void testToString()
 	{
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+	}
+	
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	@Test
+	public void testAjouterBloc()
+	{
+		this.db.ajouterBloc(new Bloc("Vert", 5));
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, "
+				+ "Bloc Couleur=Vert, taille=5 ]", this.db.toString());
+		
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,15 +67,18 @@ public class TestDeckBlocs
 	@Test
 	public void retirerBloc1()
 	{
-		db.retirerBloc(0);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		Bloc b = this.db.retirerBloc(0);
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+		assertEquals("Bloc Couleur=Orange, taille=1", b.toString());
+		
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -63,15 +86,17 @@ public class TestDeckBlocs
 	@Test
 	public void retirerBloc2()
 	{
-		db.retirerBloc(1);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		Bloc b = this.db.retirerBloc(1);
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+		assertEquals("Bloc Couleur=Orange, taille=1", b.toString());
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -79,15 +104,17 @@ public class TestDeckBlocs
 	@Test
 	public void retirerBloc3()
 	{
-		db.retirerBloc(14);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		Bloc b = this.db.retirerBloc(14);
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+		assertEquals("Bloc Couleur=Orange, taille=2", b.toString());
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,15 +122,17 @@ public class TestDeckBlocs
 	@Test
 	public void retirerBloc4()
 	{
-		db.retirerBloc(19);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		Bloc b = this.db.retirerBloc(19);
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+		assertEquals("Bloc Couleur=Orange, taille=3", b.toString());
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -111,30 +140,19 @@ public class TestDeckBlocs
 	@Test
 	public void retirerBloc5()
 	{
-		db.retirerBloc(23);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
+		Bloc b = this.db.retirerBloc(23);
+		assertEquals("[ Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, "
+				+ "Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=1, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, "
+				+ "Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=2, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, Bloc Couleur=Orange, taille=3, "
+				+ "Bloc Couleur=Orange, taille=4, Bloc Couleur=Orange, taille=4 ]", this.db.toString());
+		
+		assertEquals("Bloc Couleur=Orange, taille=4", b.toString());
 	}
 	
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	@Test
-	public void retirerBloc6()
-	{
-		db.retirerBloc(24);
-		assertEquals("[ [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], " 
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], "
-				+ "[Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=1], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], "
-				+ "[Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=2], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], [Bloc Couleur=Orange, taille=3], "
-				+ "[Bloc Couleur=Orange, taille=4], [Bloc Couleur=Orange, taille=4] ]", this.db.toString());
-	}
 }

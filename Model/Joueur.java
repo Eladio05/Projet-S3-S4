@@ -11,8 +11,9 @@ public class Joueur
 	
 	private Carte carteSauvegarde;
 	private Bloc blocSauvegarde;
-
 	
+	// ----------------------------------------------------------------------------------------------------------------
+
 	public Joueur(String pseudo,DeckCarte carte, DeckBlocs blocs) 
 	{
 		super();
@@ -24,44 +25,65 @@ public class Joueur
 		this.blocSauvegarde = null;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public int getNbPoints()
 	{
 		return this.nbPoints;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	public void setNbPoints(int nbPoints)
 	{
 		this.nbPoints = nbPoints;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public String toString()
 	{
-		return "";
+		return this.pseudo + " =" + this.listCartes.toString() + " " + this.listBlocs.toString() + " " + this.nbPoints;
 	}
 	
-	/* PAS SUR QUE CETTE METHODE SOIT ICI 
-	public void piocher(ArrayList<Carte> Pioche)
-	{
-		listCartes.getListCarte().add(Pioche.get(0));
-		Pioche.remove(0);
-	}
-	*/
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	public void jouerCoup(int nbBloc, int nbCarte) 
 	{
-		this.blocSauvegarde = this.listBlocs.retirerBloc(nbBloc);
-		this.carteSauvegarde = this.listCartes.getListCarte().get(nbCarte);
-		this.listCartes.getListCarte().remove(nbCarte);	
+		Bloc b = this.listBlocs.retirerBloc(nbBloc);
+		
+		Carte c = this.listCartes.getListCarte().get(nbCarte);
+		this.listCartes.getListCarte().remove(nbCarte);
+		
+		this.blocSauvegarde = b;
+		this.carteSauvegarde = c;
+		
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	public void annulerCoup() 
 	{
+		
 		this.listBlocs.ajouterBloc(this.blocSauvegarde);
 		this.listCartes.getListCarte().add(this.carteSauvegarde);
 		
 		this.blocSauvegarde = null;
 		this.carteSauvegarde = null;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
+	
+	public DeckCarte piocher(DeckCarte tas)
+	{
+		Carte c = tas.getListCarte().get(0);
+		tas.getListCarte().remove(0);
+		this.listCartes.getListCarte().add(c);
+		return tas;
+	}
+	
+	
+	
 	
 
 }

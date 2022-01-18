@@ -51,27 +51,35 @@ public class DeckBlocs
 		Bloc[] tab = new Bloc[this.nbBlocs - 1];
 		Bloc b = null;
 		
-		for (int i=0 ; i < this.nbBlocs - 1 ; i=i+1)
+		for (int i=0 ; i < this.nbBlocs ; i=i+1)
 		{
 			if (i < numeroBloc)
 			{
 				tab[i] = this.listeBlocs[i];
 			}
-			else if (i == numeroBloc)
+			else
 			{
-				b = this.listeBlocs[numeroBloc];
-				tab[i] = this.listeBlocs[i+1];
+				if (i == numeroBloc)
+				{
+					b = this.listeBlocs[numeroBloc];
+				}	
+				
+				if (i < this.nbBlocs - 1)
+				{
+					tab[i] = this.listeBlocs[i+1];
+				}
+				
 			}
-			else 
-			{
-				tab[i] = this.listeBlocs[i+1];
-			}
+
 		}
 		
 		this.nbBlocs = this.nbBlocs - 1;
 		this.listeBlocs = tab;
 		return b;
+		
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	public void ajouterBloc(Bloc b)
 	{
@@ -81,6 +89,7 @@ public class DeckBlocs
 			tab[i] = this.listeBlocs[i];
 		}
 		tab[this.nbBlocs] = b;
+		this.listeBlocs = tab;
 		this.nbBlocs = this.nbBlocs + 1;
 	}
 		
@@ -88,9 +97,6 @@ public class DeckBlocs
 	
 	public String toString()
 	{
-		System.out.println("test :" + this.nbBlocs);
-		
-		
 		String s = "[ ";
 		int compteur = 0;
 		
