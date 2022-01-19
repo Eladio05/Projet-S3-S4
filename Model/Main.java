@@ -6,13 +6,6 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		/*
-		DeckBlocs db = new DeckBlocs("Orange");
-		Bloc b = new Bloc("Vert", 12);
-		db.ajouterBloc(b);
-		System.out.println(db);
-		*/
-		
 		DeckBlocs db = new DeckBlocs("Vert");
 		
 		Carte c1 = new Carte(0, 0);

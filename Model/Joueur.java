@@ -76,8 +76,11 @@ public class Joueur
 	
 	public DeckCarte piocher(DeckCarte tas)
 	{
-		Carte c = tas.getListCarte().get(0);
-		tas.getListCarte().remove(0);
+		int nbCartesTas = tas.getListCarte().size();
+		
+		
+		Carte c = tas.getListCarte().get(nbCartesTas - 1);
+		tas.getListCarte().remove(nbCartesTas - 1);
 		this.listCartes.getListCarte().add(c);
 		return tas;
 	}
