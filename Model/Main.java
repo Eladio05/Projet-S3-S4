@@ -6,6 +6,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		/*
 		DeckBlocs db = new DeckBlocs("Vert");
 		
 		Carte c1 = new Carte(0, 0);
@@ -32,7 +33,9 @@ public class Main
 		
 		j.annulerCoup();
 		System.out.println(j);
+		*/
 		
+		Partie p = new Partie();
 		
 		
 		
