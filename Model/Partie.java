@@ -15,13 +15,19 @@ public class Partie
 	{
 		this.m = new Map();	
 		this.listeJoueurs = new ArrayList<>();
-		
-		this.initialiserPioche();
-		this.initialiserJoueurs();
-		this.JouerPartie();
+	}
+	
+	public DeckCarte getPioche()
+	{
+		return this.pioche;
+	}
+	
+	public ArrayList<Joueur> getListeJoueurs()
+	{
+		return this.listeJoueurs;
 	}
 
-	private void initialiserPioche()
+	public void initialiserPioche()
 	{
 		ArrayList<Carte> lc = new  ArrayList<>();
 		
@@ -37,10 +43,9 @@ public class Partie
 		}
 		
 		this.pioche = new DeckCarte(lc);
-		this.melangerPioche();
 	}
 	
-	private void melangerPioche()
+	public void melangerPioche()
 	{
 		Random r = new Random();
 		for (int i=0 ; i < 2000 ; i=i+1)
@@ -55,54 +60,53 @@ public class Partie
 		}
 	}
 	
-	private void initialiserJoueurs()
-	{
-		System.out.println("Entrez le nombre de joueurs");
-		int nbJoueurs = new Scanner(System.in).nextInt();
-		if(nbJoueurs>4 || nbJoueurs<=0) System.out.println("Erreur sur le nombre de joueur (ne pas depasser 4)");
-		else {
-			for (int i=0 ; i<nbJoueurs ; i=i+1)
-			{
-				System.out.println("Entrez le pseudo du Joueur "+ (i+1));
-				String pseudo = new Scanner(System.in).nextLine();
-				String couleur = "";
-			
-			
-				if (i == 0)
-				{
-					couleur = "Jaune";
-				}
-				else if (i == 1)
-				{
-					couleur = "Violet";
-				}
-				else if ( i==2 )
-				{
-					couleur = "Bleu";
-				}
-				else 
-				{
-					couleur = "Orange";
-				}
-			
-				DeckBlocs db = new DeckBlocs(couleur);
-				ArrayList<Carte> lc = new ArrayList<>();
-			
-				for (int c=0 ; c<4 ; c=c+1)
-				{
-					lc.add(c, this.pioche.getListCarte().get(c));
-					this.pioche.getListCarte().remove(c);
-				}
-				System.out.println("Pioche attribué à chaque joueur");
-				DeckCarte dc = new DeckCarte(lc);
-				Joueur j = new Joueur(pseudo, dc, db);
-				this.listeJoueurs.add(j);
-				System.out.println(listeJoueurs.size());
-				
-			}
-		}
-		
-	}
+	public void initialiserJoueurs()
+    {
+        System.out.println("Entrez le nombre de joueurs");
+        int nbJoueurs = new Scanner(System.in).nextInt();
+        if(nbJoueurs>4 || nbJoueurs<=0) System.out.println("Erreur sur le nombre de joueur (ne pas depasser 4)");
+        else {
+            for (int i=0 ; i<nbJoueurs ; i=i+1)
+            {
+                System.out.println("Entrez le pseudo du Joueur "+ (i+1));
+                String pseudo = new Scanner(System.in).nextLine();
+                String couleur = "";
+
+
+                if (i == 0)
+                {
+                    couleur = "Jaune";
+                }
+                else if (i == 1)
+                {
+                    couleur = "Violet";
+                }
+                else if ( i==2 )
+                {
+                    couleur = "Bleu";
+                }
+                else 
+                {
+                    couleur = "Orange";
+                }
+
+                DeckBlocs db = new DeckBlocs(couleur);
+                ArrayList<Carte> lc = new ArrayList<>();
+
+                for (int c=0 ; c<4 ; c=c+1)
+                {
+                    lc.add(c, this.pioche.getListCarte().get(c));
+                    this.pioche.getListCarte().remove(c);
+                }
+                System.out.println("Pioche attribué à chaque joueur");
+                DeckCarte dc = new DeckCarte(lc);
+                Joueur j = new Joueur(pseudo, dc, db);
+                this.listeJoueurs.add(j);
+
+            }
+        }
+
+    }
 	
 	public void JouerPartie(){
 		if(listeJoueurs.size() == 2 || listeJoueurs.size() == 4) {
@@ -140,7 +144,7 @@ public class Partie
 			}
 		}	
 	}
-	
+
 
 	
 }

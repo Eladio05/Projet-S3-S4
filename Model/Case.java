@@ -54,7 +54,7 @@ public class Case
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public void AjoutListeBlocs(Bloc b)
+	public void setListeBlocs(Bloc b)
 	{
 		this.listeBlocs.add(b);
 	}
