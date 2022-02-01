@@ -40,12 +40,16 @@ public class TestJoueur
 	{
 	    this.j = null; 
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test
 	public void testGetNbPoints()
 	{
 		assertEquals(0, this.j.getNbPoints());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test
 	public void testSetNbPoints()
@@ -53,6 +57,8 @@ public class TestJoueur
 		this.j.setNbPoints(4);
 		assertEquals(4, this.j.getNbPoints());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testToString()
@@ -65,6 +71,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testJouerCoup1()
@@ -78,6 +86,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testJouerCoup2()
@@ -91,6 +101,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testJouerCoup3()
@@ -104,6 +116,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testJouerCoup4()
@@ -117,6 +131,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void testJouerCoup5()
@@ -130,6 +146,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=2, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=3, "
 				+ "Bloc Couleur=Vert, taille=3, Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=4 ] 0", this.j.toString());
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test
 	public void testAnnulerCoup()
@@ -146,6 +164,8 @@ public class TestJoueur
 				+ "Bloc Couleur=Vert, taille=4, Bloc Couleur=Vert, taille=2 ] 0", this.j.toString());
 		
 	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	@Test 
 	public void piocher()
