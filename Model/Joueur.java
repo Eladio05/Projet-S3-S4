@@ -41,6 +41,14 @@ public class Joueur
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
 	public String toString()
 	{
 		return this.pseudo + " =" + this.listCartes.toString() + " " + this.listBlocs.toString() + " " + this.nbPoints;
@@ -51,17 +59,24 @@ public class Joueur
 	public void jouerCoup(int nbBloc, int nbCarte) 
 	{
 		Bloc b = this.listBlocs.retirerBloc(nbBloc);
-		
 		Carte c = this.listCartes.getListCarte().get(nbCarte);
 		this.listCartes.getListCarte().remove(nbCarte);
-		
 		this.blocSauvegarde = b;
 		this.carteSauvegarde = c;
+		
 		
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
+	public Carte getCarteSauvegarde() {
+		return carteSauvegarde;
+	}
+
+	public Bloc getBlocSauvegarde() {
+		return blocSauvegarde;
+	}
+
 	public void annulerCoup() 
 	{
 		
