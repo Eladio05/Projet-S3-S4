@@ -71,9 +71,9 @@ public class TestCase
     	Bloc b2 = new Bloc("Bleu", 2);
     	Bloc b3 = new Bloc("Violet", 3);
     	
-    	this.c.setListeBlocs(b1);
-    	this.c.setListeBlocs(b2);
-    	this.c.setListeBlocs(b3);
+    	this.c.AjoutListeBlocs(b1);
+    	this.c.AjoutListeBlocs(b2);
+    	this.c.AjoutListeBlocs(b3);
     	
     	assertEquals("Bloc Couleur=Violet, taille=3", this.c.getListeBlocs().toString());
     }
@@ -84,7 +84,7 @@ public class TestCase
     public void testSetListeBlocs()
     {
     	Bloc b1 = new Bloc("Orange", 1);
-    	this.c.setListeBlocs(b1);
+    	this.c.AjoutListeBlocs(b1);
     	assertEquals("Bloc Couleur=Orange, taille=1", this.c.getListeBlocs().toString());
     }
     
