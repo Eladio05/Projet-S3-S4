@@ -64,5 +64,10 @@ public class Quartier
 		s = s + "]\n";
 		return s;
 	}
+
+
+	public Case[][] getListeCases() {
+		return listeCases;
+	}
 		
 }

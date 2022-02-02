@@ -115,4 +115,9 @@ public class DeckBlocs
 		}
 		return s + "]";	
 	}
+
+	public String getCouleur() {
+		return couleur;
+	}
+
 }

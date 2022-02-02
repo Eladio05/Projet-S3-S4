@@ -47,9 +47,9 @@ public class Case
 	
 	// -------------------------------------------------------------------------------------------------
 	
-	public Bloc getListeBlocs()
+	public ArrayList<Bloc> getListeBlocs()
 	{
-		return this.listeBlocs.get(this.listeBlocs.size() - 1);
+		return this.listeBlocs;
 	}
 	
 	// -------------------------------------------------------------------------------------------------
@@ -66,7 +66,16 @@ public class Case
 		return "[" + String.valueOf(this.abscisse) + " " + String.valueOf(this.ordonnee) + "]";
 	}
 	
-		
+	// ------------------------------------------------------------------
+	
+	public int taille() {
+		int cpt = 0;
+		for(int i=0;i<this.listeBlocs.size();i++) {
+			cpt += this.listeBlocs.get(i).getTaille();
+		}
+		return cpt;
+	}
+	
 }
 
 

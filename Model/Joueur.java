@@ -8,7 +8,6 @@ public class Joueur
 	private int nbPoints;
 	private DeckCarte listCartes;
 	private DeckBlocs listBlocs;
-	
 	private Carte carteSauvegarde;
 	private Bloc blocSauvegarde;
 	
@@ -27,6 +26,14 @@ public class Joueur
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
+	public DeckCarte getListCartes() {
+		return listCartes;
+	}
+
+	public DeckBlocs getListBlocs() {
+		return listBlocs;
+	}
+
 	public int getNbPoints()
 	{
 		return this.nbPoints;

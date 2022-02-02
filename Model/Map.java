@@ -48,4 +48,8 @@ public class Map
 		s = s + "";
 		return s;
 	}
+
+	public Quartier[] getListeQuartiers() {
+		return listeQuartiers;
+	}
 }
