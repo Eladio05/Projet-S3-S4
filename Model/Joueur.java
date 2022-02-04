@@ -26,13 +26,19 @@ public class Joueur
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
-	public DeckCarte getListCartes() {
+	public DeckCarte getListCartes() 
+	{
 		return listCartes;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 
-	public DeckBlocs getListBlocs() {
+	public DeckBlocs getListBlocs() 
+	{
 		return listBlocs;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 
 	public int getNbPoints()
 	{
@@ -48,13 +54,12 @@ public class Joueur
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
-	public String getPseudo() {
+	public String getPseudo() 
+	{
 		return pseudo;
 	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 
 	public String toString()
 	{
@@ -76,14 +81,6 @@ public class Joueur
 	
 	// ----------------------------------------------------------------------------------------------------------------
 	
-	public Carte getCarteSauvegarde() {
-		return carteSauvegarde;
-	}
-
-	public Bloc getBlocSauvegarde() {
-		return blocSauvegarde;
-	}
-
 	public void annulerCoup() 
 	{
 		

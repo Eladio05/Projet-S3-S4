@@ -42,6 +42,20 @@ public class DeckBlocs
 			
 		}
 		
+	}  
+	
+	// ----------------------------------------------------------------------------------------------------------------
+	
+	public int getNbBlocs()
+	{
+		return this.nbBlocs;
+	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
+	
+	public Bloc recupererBloc(int numeroBloc)
+	{
+		return this.listeBlocs[numeroBloc];
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
@@ -116,8 +130,6 @@ public class DeckBlocs
 		return s + "]";	
 	}
 
-	public String getCouleur() {
-		return couleur;
-	}
+	
 
 }

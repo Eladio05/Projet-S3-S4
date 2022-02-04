@@ -68,14 +68,6 @@ public class Case
 	
 	// ------------------------------------------------------------------
 	
-	public int taille() {
-		int cpt = 0;
-		for(int i=0;i<this.listeBlocs.size();i++) {
-			cpt += this.listeBlocs.get(i).getTaille();
-		}
-		return cpt;
-	}
-	
 }
 
 

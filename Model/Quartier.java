@@ -27,6 +27,20 @@ public class Quartier
 	
 	// ----------------------------------------------------------------------
 	
+	public int getNbLignes()
+	{
+		return this.nbLignes;
+	}
+	
+	// ----------------------------------------------------------------------
+	
+	public int getNbColonnes()
+	{
+		return this.nbColonnes;
+	}
+	
+	// ----------------------------------------------------------------------
+	
 	public Case getCase(int x, int y)
 	{
 		return this.listeCases[x][y];
@@ -65,9 +79,6 @@ public class Quartier
 		return s;
 	}
 
-
-	public Case[][] getListeCases() {
-		return listeCases;
-	}
+	
 		
 }

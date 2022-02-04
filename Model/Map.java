@@ -3,19 +3,27 @@ package Model;
 
 public class Map
 {
-	
+	private int nbQuartiers;
 	private Quartier[] listeQuartiers;
 	
 	// ---------------------------------------------------------------------------
 	
 	public Map()
 	{
-		this.listeQuartiers = new Quartier[6];
+		this.nbQuartiers = 6;
+		this.listeQuartiers = new Quartier[this.nbQuartiers];
 	
 		for (int i = 0 ; i < this.listeQuartiers.length ; i=i+1)
 		{
 			this.listeQuartiers[i] = new Quartier();
 		}
+	}
+	
+	// ---------------------------------------------------------------------------
+	
+	public int getNbQuartiers() 
+	{
+		return this.listeQuartiers.length;
 	}
 	
 	// ---------------------------------------------------------------------------
@@ -49,7 +57,4 @@ public class Map
 		return s;
 	}
 
-	public Quartier[] getListeQuartiers() {
-		return listeQuartiers;
-	}
 }

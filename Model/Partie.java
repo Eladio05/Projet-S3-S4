@@ -20,8 +20,18 @@ public class Partie
 		this.initialiserJoueurs();
 		this.JouerPartie();
 	}
+	
+	public DeckCarte getPioche()
+	{
+		return this.pioche;
+	}
+	
+	public ArrayList<Joueur> getListeJoueurs()
+	{
+		return this.listeJoueurs;
+	}
 
-	private void initialiserPioche()
+	public void initialiserPioche()
 	{
 		ArrayList<Carte> lc = new  ArrayList<>();
 		
@@ -37,10 +47,9 @@ public class Partie
 		}
 		
 		this.pioche = new DeckCarte(lc);
-		this.melangerPioche();
 	}
 	
-	private void melangerPioche()
+	public void melangerPioche()
 	{
 		Random r = new Random();
 		for (int i=0 ; i < 2000 ; i=i+1)
@@ -55,11 +64,11 @@ public class Partie
 		}
 	}
 	
-	private void initialiserJoueurs()
+	public void initialiserJoueurs()
 	{
 		System.out.println("Entrez le nombre de joueurs");
 		int nbJoueurs = new Scanner(System.in).nextInt();
-		if(nbJoueurs>4 || nbJoueurs<=0) System.out.println("Erreur sur le nombre de joueur (ne pas depasser 4)");
+		if(nbJoueurs>4 || nbJoueurs<=0) System.out.println("Erreur sur le nombre de joueur. Celui ci doit être compris entre 1 et 4");
 		else {
 			for (int i=0 ; i<nbJoueurs ; i=i+1)
 			{
@@ -93,80 +102,211 @@ public class Partie
 					lc.add(c, this.pioche.getListCarte().get(c));
 					this.pioche.getListCarte().remove(c);
 				}
-				System.out.println("Pioche attribué à chaque joueur");
 				DeckCarte dc = new DeckCarte(lc);
 				Joueur j = new Joueur(pseudo, dc, db);
 				this.listeJoueurs.add(j);
-				System.out.println(listeJoueurs.size());
-				
 			}
 		}
 		
 	}
 	
-	public void JouerPartie(){
-		if(listeJoueurs.size() == 2 || listeJoueurs.size() == 4) {
-			for(int i=0; i<4;i++) {
-				for(int j=0;j<listeJoueurs.size();j++) {
-					Joueur J = listeJoueurs.get(j);
-					System.out.println("Au tour de "+J.getPseudo());
-					System.out.println("Choisir le bloc à jouer");
-					int bloc = new Scanner(System.in).nextInt();
-					System.out.println("Choisir la carte à jouer");
-					int Carte = new Scanner(System.in).nextInt();
-					listeJoueurs.get(j).jouerCoup(bloc, Carte);
-					System.out.println("Choisir le quartier où jouer le bloc");
-					int Quartier = new Scanner(System.in).nextInt();
-					m.getQuartier(Quartier).getCase(J.getCarteSauvegarde().getAbscisse(), J.getCarteSauvegarde().getOrdonne()).AjoutListeBlocs(J.getBlocSauvegarde());
-				}
-				/*this.compterNombrePointHauteur();
-				this.compterNombrePointPossede();
-				this.compterNombrePointMajorite();*/
-			}
+	public void JouerPartie()
+	{
+		
+		int nbManches = 0;
+		
+		if(listeJoueurs.size() == 2 || listeJoueurs.size() == 4) 
+		{
+			nbManches = 4;
 		}
-		else if(listeJoueurs.size() == 3) {
-			for(int i=0; i<6;i++) {
-				for(int j=0;j<listeJoueurs.size();j++) {
-					Joueur J = listeJoueurs.get(i);
-					System.out.println("Au tour de "+J.getPseudo());
-					System.out.println("Choisir le bloc à jouer");
-					int bloc = new Scanner(System.in).nextInt();
-					System.out.println("Choisir la carte à jouer");
-					int Carte = new Scanner(System.in).nextInt();
-					listeJoueurs.get(j).jouerCoup(bloc, Carte);
-					System.out.println("Choisir le quartier où jouer le bloc");
-					int Quartier = new Scanner(System.in).nextInt();
-					m.getQuartier(Quartier).getCase(J.getCarteSauvegarde().getAbscisse(), J.getCarteSauvegarde().getOrdonne()).AjoutListeBlocs(J.getBlocSauvegarde());
-					System.out.println("Au joueur suivant :");
-				}
-				/*this.compterNombrePointHauteur();
-				this.compterNombrePointPossede();
-				this.compterNombrePointMajorite();*/
+		else if (listeJoueurs.size() == 3)
+		{
+			nbManches = 6;
+		}
+		
+		for (int i=0 ; i < nbManches ; i=i+1)
+		{
+			for(int j=0;j<listeJoueurs.size();j++) 
+			{
+				Joueur J = listeJoueurs.get(j);
+				
+				System.out.println("Au tour de "+J.getPseudo());
+				System.out.println(J);
+				
+				System.out.println("Choisir le bloc à jouer");
+				int numeroBloc = new Scanner(System.in).nextInt();
+				Bloc b = J.getListBlocs().recupererBloc(numeroBloc);
+				
+				System.out.println("Choisir la carte à jouer");
+				int numeroCarte = new Scanner(System.in).nextInt();
+				Carte c = J.getListCartes().getListCarte().get(numeroCarte);
+				
+				System.out.println("Choisir le quartier où jouer le bloc");
+				System.out.println(this.m);
+		
+				int Quartier = new Scanner(System.in).nextInt();
+				m.getQuartier(Quartier).getCase(c.getAbscisse(), c.getOrdonne()).AjoutListeBlocs(b);
+				
+				listeJoueurs.get(j).jouerCoup(numeroBloc, numeroCarte);
+				J.piocher(this.pioche);
+				
+				System.out.println("--------------------------------------------------------");
 			}
+			
+
+			this.compterNombrePointHauteur();
+			
+			for (Joueur j : this.listeJoueurs)
+			{
+				System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
+			}
+			 /*
+			this.compterNombrePointPossede();
+			this.compterNombrePointMajorite();
+			*/
 		}	
+			
 	}
 	
-	public void compterNombrePointHauteur() {
+	public void ajouterPoints(String couleurBloc, int nbPointsAAjouter)
+	{
+		int indiceJoueur = -1; 
+		
+		if (couleurBloc == "Jaune")
+		{
+			indiceJoueur = 0;
+		}
+		else if (couleurBloc == "Violet")
+		{
+			indiceJoueur = 1;
+		}
+		else if (couleurBloc == "Bleu")
+		{
+			indiceJoueur = 2;
+		}
+		else if (couleurBloc == "Orange")
+		{
+			indiceJoueur = 3;
+		}
+		
+		Joueur j = this.listeJoueurs.get(indiceJoueur);
+		j.setNbPoints(j.getNbPoints() + 3);	
+	}
+	
+	
+	public void compterNombrePointHauteur() 
+	{
 		String couleurGagnant="";
-		int taille = m.getQuartier(0).getCase(0, 0).taille();
-		for(int i=0;i<m.getListeQuartiers().length;i++) {
-			for(int j=0;j<m.getQuartier(i).getListeCases().length;j++) {
-				if(m.getQuartier(i).getCase(i, j).taille()> taille) {
+		int taille = 0;
+		
+
+		for(int i=0; i < this.m.getNbQuartiers() ; i++) 
+		{
+			Quartier q = this.m.getQuartier(i);
+			int nbLignes = q.getNbLignes();
+			int nbColonnes = q.getNbColonnes();
+			
+			for (int j=0 ; j < nbLignes ; j=j+1)
+			{
+				for (int k=0 ; k < nbColonnes ; k=k+1)
+				{
+					//System.out.println("abc" + i + " " + j + " " + k);
+					Case c = q.getCase(j, k);
+					
+					int nbBlocsCase = c.getListeBlocs().size();
+					if (nbBlocsCase != 0)
+					{
+						Bloc dernierBloc = c.getListeBlocs().get(nbBlocsCase - 1);
+						int tailleDernierBloc = dernierBloc.getTaille();
+
+						if (tailleDernierBloc > taille)
+						{
+							taille = tailleDernierBloc;
+							couleurGagnant = dernierBloc.getCouleur();
+						}
+					}
+					
+					System.out.println("test " + c + couleurGagnant);
+					
+				}
+			}
+			
+		}
+		
+		this.ajouterPoints(couleurGagnant, taille);
+	}
+	
+	/*
+	public void compterNombrePointHauteurtest() 
+	{
+		String couleurGagnant="";
+		int taille = 0;
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAA2");
+		
+		for(int i=0;i<m.getListeQuartiers().length;i++) 
+		{
+			for(int j=0;j<m.getQuartier(i).getListeCases().length;j++) 
+			{
+				System.out.println("ici");
+				System.out.println(m.getQuartier(i) + " ");
+				
+	
+				if(m.getQuartier(i).getCase(i, j).taille()> taille) 
+				{
 					taille = m.getQuartier(i).getCase(i, j).taille();
 					Case caseG = m.getQuartier(i).getCase(i, j);
 					int nbrBlocG = caseG.getListeBlocs().lastIndexOf(caseG.getListeBlocs());
 					Bloc blocG = caseG.getListeBlocs().get(nbrBlocG);
 					couleurGagnant = blocG.getCouleur();
 				}
+				
 			}
 		}
+		
+		
 		for(int x=0;x<listeJoueurs.size();x++) {
 			if(listeJoueurs.get(x).getListBlocs().getCouleur().equals(couleurGagnant)) {
 				listeJoueurs.get(x).setNbPoints(listeJoueurs.get(x).getNbPoints()+3);
 				System.out.println("Le joueurs qui gagne avec la tour la plus haute est : "+listeJoueurs.get(x).getPseudo());
 			}
 		}
+		
+		
 	}
+	*/ 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	
 	public void compterNombrePointPossede() {
 		for(int i=0;i<m.getListeQuartiers().length;i++) {
@@ -241,6 +381,8 @@ public class Partie
 			}
 		}
 	}
+	
+	*/
 
 	
 }
