@@ -168,6 +168,48 @@ public class Partie
 			
 	}
 	
+	public int recherchePlusGrand(int[] tableau)
+	{
+		int plusGrand = -1;
+		for (int i=0 ; i<tableau.length ; i=i+1)
+		{
+			if (tableau[i] > plusGrand)
+			{
+				plusGrand = tableau[i];
+			}
+		}
+		return plusGrand;
+	}
+	
+	public ArrayList<Bloc> recupererBlocsMap()
+	{
+		ArrayList<Bloc> listeBlocs = new ArrayList<>();
+		
+		for(int i=0; i < this.m.getNbQuartiers() ; i++) 
+		{
+			Quartier q = this.m.getQuartier(i);
+			int nbLignes = q.getNbLignes();
+			int nbColonnes = q.getNbColonnes();
+			
+			for (int j=0 ; j < nbLignes ; j=j+1)
+			{
+				for (int k=0 ; k < nbColonnes ; k=k+1)
+				{
+					Case c = q.getCase(j, k);
+					int nbBlocsCase = c.getListeBlocs().size();
+					if (nbBlocsCase != 0)
+					{
+						Bloc dernierBloc = c.getListeBlocs().get(nbBlocsCase - 1);
+						listeBlocs.add(dernierBloc);
+					}
+					
+				}
+			}
+			
+		}
+		return listeBlocs;
+	}
+	
 	public void ajouterPoints(String couleurBloc, int nbPointsAAjouter)
 	{
 		int indiceJoueur = -1; 
@@ -193,7 +235,7 @@ public class Partie
 		j.setNbPoints(j.getNbPoints() + 3);	
 	}
 	
-	
+	/*
 	public void compterNombrePointHauteur() 
 	{
 		String couleurGagnant="";
@@ -210,7 +252,7 @@ public class Partie
 			{
 				for (int k=0 ; k < nbColonnes ; k=k+1)
 				{
-					//System.out.println("abc" + i + " " + j + " " + k);
+					//System.out.println("TEST : " + i + " " + j + " " + k);
 					Case c = q.getCase(j, k);
 					
 					int nbBlocsCase = c.getListeBlocs().size();
@@ -236,44 +278,76 @@ public class Partie
 		this.ajouterPoints(couleurGagnant, taille);
 	}
 	
-	/*
-	public void compterNombrePointHauteurtest() 
-	{
-		String couleurGagnant="";
-		int taille = 0;
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAA2");
-		
-		for(int i=0;i<m.getListeQuartiers().length;i++) 
-		{
-			for(int j=0;j<m.getQuartier(i).getListeCases().length;j++) 
-			{
-				System.out.println("ici");
-				System.out.println(m.getQuartier(i) + " ");
-				
 	
-				if(m.getQuartier(i).getCase(i, j).taille()> taille) 
+	
+	
+	
+	public void compterNombrePointPossede()
+	{
+		for (int i=0 ; i < this.m.getNbQuartiers() ; i=i+1)
+		{
+			Quartier q = this.m.getQuartier(i);
+			int nbLignes = q.getNbLignes();
+			int nbColonnes = q.getNbColonnes();
+			
+			int[] compteurCasesPossedesQuartier = new int[4];
+			String[] couleursBlocsJoueurs = {"Jaune", "Violet", "Bleu", "Orange"};
+			
+			for (int j=0 ; j < nbLignes ; j=j+1)
+			{
+				for (int k=0 ; k < nbColonnes ; k=k+1)
 				{
-					taille = m.getQuartier(i).getCase(i, j).taille();
-					Case caseG = m.getQuartier(i).getCase(i, j);
-					int nbrBlocG = caseG.getListeBlocs().lastIndexOf(caseG.getListeBlocs());
-					Bloc blocG = caseG.getListeBlocs().get(nbrBlocG);
-					couleurGagnant = blocG.getCouleur();
+					Case c = q.getCase(j, k);
+					
+					int nbBlocsCase = c.getListeBlocs().size();
+					if (nbBlocsCase != 0)
+					{
+						Bloc dernierBloc = c.getListeBlocs().get(nbBlocsCase - 1);
+						String couleurDernierBloc = dernierBloc.getCouleur();
+						
+						if (couleurDernierBloc == "Jaune")
+						{
+							compteurCasesPossedesQuartier[0] = compteurCasesPossedesQuartier[0] + 1;
+						}
+						else if (couleurDernierBloc == "Violet")
+						{
+							compteurCasesPossedesQuartier[1] = compteurCasesPossedesQuartier[1] + 1;
+						}
+						else if (couleurDernierBloc == "Bleu")
+						{
+							compteurCasesPossedesQuartier[2] = compteurCasesPossedesQuartier[2] + 1;
+						}
+						else if (couleurDernierBloc == "Orange")
+						{
+							compteurCasesPossedesQuartier[2] = compteurCasesPossedesQuartier[2] + 1;
+						}
+					}
 				}
 				
+				
+				int plusGrand = this.recherchePlusGrand(compteurCasesPossedesQuartier);
+				this.ajouterPoints(couleursBlocsJoueurs[plusGrand], 2);
+				
+				for (int l=0 ; l<4 ;l=l+1)
+				{
+					compteurCasesPossedesQuartier[l] = 0;
+				}
 			}
 		}
-		
-		
-		for(int x=0;x<listeJoueurs.size();x++) {
-			if(listeJoueurs.get(x).getListBlocs().getCouleur().equals(couleurGagnant)) {
-				listeJoueurs.get(x).setNbPoints(listeJoueurs.get(x).getNbPoints()+3);
-				System.out.println("Le joueurs qui gagne avec la tour la plus haute est : "+listeJoueurs.get(x).getPseudo());
-			}
-		}
-		
-		
 	}
-	*/ 
+	*/
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -327,6 +401,17 @@ public class Partie
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void compterNombrePointMajorite() {
 		for(int i=0;i<m.getListeQuartiers().length;i++) {
