@@ -1,6 +1,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +12,6 @@ public class Partie
 	private Map m;
 	private DeckCarte pioche;
 	private ArrayList<Joueur> listeJoueurs;
-	
 	
 	public Partie()
 	{
@@ -153,13 +155,13 @@ public class Partie
 				System.out.println("--------------------------------------------------------");
 			}
 			
-
-			this.compterNombrePointHauteur();
+			this.compterNombrePointsHauteur();
 			
 			for (Joueur j : this.listeJoueurs)
 			{
 				System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
 			}
+			
 			 /*
 			this.compterNombrePointPossede();
 			this.compterNombrePointMajorite();
@@ -181,9 +183,9 @@ public class Partie
 		return plusGrand;
 	}
 	
-	public ArrayList<Bloc> recupererBlocsMap()
+	public HashMap<Bloc, Integer> recupererBlocsMap()
 	{
-		ArrayList<Bloc> listeBlocs = new ArrayList<>();
+		HashMap<Bloc, Integer> listeBlocs = new HashMap<>();
 		
 		for(int i=0; i < this.m.getNbQuartiers() ; i++) 
 		{
@@ -200,7 +202,7 @@ public class Partie
 					if (nbBlocsCase != 0)
 					{
 						Bloc dernierBloc = c.getListeBlocs().get(nbBlocsCase - 1);
-						listeBlocs.add(dernierBloc);
+						listeBlocs.put(dernierBloc, i);
 					}
 					
 				}
@@ -232,8 +234,74 @@ public class Partie
 		}
 		
 		Joueur j = this.listeJoueurs.get(indiceJoueur);
-		j.setNbPoints(j.getNbPoints() + 3);	
+		j.setNbPoints(j.getNbPoints() + nbPointsAAjouter);	
 	}
+	
+	
+	public void compterNombrePointsHauteur() 
+	{
+		String couleurGagnant="";
+		int taille = 0;
+		
+		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
+		System.out.println(listeBlocs);
+		
+		for (Bloc b : listeBlocs.keySet())
+		{
+			if (b.getTaille() > taille)
+			{
+				taille = b.getTaille();
+				couleurGagnant = b.getCouleur();
+				
+				System.out.println("test " + b + couleurGagnant);
+			}
+		}
+		this.ajouterPoints(couleurGagnant, taille);
+	}
+	
+	public void compterNombrePointsPossede()
+	{
+		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
+		/* Trier l'ensemble */ 
+		
+		for (Bloc b : listeBlocs.keySet())
+		{
+		
+		}
+		
+	}
+	
+	public void compterNombrePointsNombre()
+	{
+		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	public void compterNombrePointHauteur() 
@@ -337,49 +405,7 @@ public class Partie
 	}
 	*/
 	
-	
-	
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	
 	public void compterNombrePointPossede() {
@@ -401,16 +427,6 @@ public class Partie
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public void compterNombrePointMajorite() {
