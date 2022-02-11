@@ -1,9 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -183,35 +180,6 @@ public class Partie
 		return plusGrand;
 	}
 	
-	public HashMap<Bloc, Integer> recupererBlocsMap()
-	{
-		HashMap<Bloc, Integer> listeBlocs = new HashMap<>();
-		
-		for(int i=0; i < this.m.getNbQuartiers() ; i++) 
-		{
-			Quartier q = this.m.getQuartier(i);
-			int nbLignes = q.getNbLignes();
-			int nbColonnes = q.getNbColonnes();
-			
-			for (int j=0 ; j < nbLignes ; j=j+1)
-			{
-				for (int k=0 ; k < nbColonnes ; k=k+1)
-				{
-					Case c = q.getCase(j, k);
-					int nbBlocsCase = c.getListeBlocs().size();
-					if (nbBlocsCase != 0)
-					{
-						Bloc dernierBloc = c.getListeBlocs().get(nbBlocsCase - 1);
-						listeBlocs.put(dernierBloc, i);
-					}
-					
-				}
-			}
-			
-		}
-		return listeBlocs;
-	}
-	
 	public void ajouterPoints(String couleurBloc, int nbPointsAAjouter)
 	{
 		int indiceJoueur = -1; 
@@ -239,72 +207,6 @@ public class Partie
 	
 	
 	public void compterNombrePointsHauteur() 
-	{
-		String couleurGagnant="";
-		int taille = 0;
-		
-		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
-		System.out.println(listeBlocs);
-		
-		for (Bloc b : listeBlocs.keySet())
-		{
-			if (b.getTaille() > taille)
-			{
-				taille = b.getTaille();
-				couleurGagnant = b.getCouleur();
-				
-				System.out.println("test " + b + couleurGagnant);
-			}
-		}
-		this.ajouterPoints(couleurGagnant, taille);
-	}
-	
-	public void compterNombrePointsPossede()
-	{
-		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
-		/* Trier l'ensemble */ 
-		
-		for (Bloc b : listeBlocs.keySet())
-		{
-		
-		}
-		
-	}
-	
-	public void compterNombrePointsNombre()
-	{
-		HashMap<Bloc, Integer> listeBlocs = this.recupererBlocsMap();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	public void compterNombrePointHauteur() 
 	{
 		String couleurGagnant="";
 		int taille = 0;
@@ -347,10 +249,7 @@ public class Partie
 	}
 	
 	
-	
-	
-	
-	public void compterNombrePointPossede()
+	public void compterNombrePointsPossede()
 	{
 		for (int i=0 ; i < this.m.getNbQuartiers() ; i=i+1)
 		{
@@ -403,7 +302,6 @@ public class Partie
 			}
 		}
 	}
-	*/
 	
 
 	/*
