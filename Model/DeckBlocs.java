@@ -51,6 +51,11 @@ public class DeckBlocs
 		return this.nbBlocs;
 	}
 	
+	public String getCouleur()
+	{
+		return this.couleur;
+	}
+	
 	// ----------------------------------------------------------------------------------------------------------------
 	
 	public Bloc recupererBloc(int numeroBloc)

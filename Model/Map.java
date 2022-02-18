@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Map
 {
@@ -40,6 +42,30 @@ public class Map
 		return this.listeQuartiers[numero];
 	}
 	
+	// -----------------------------------------------------------------------------
+	
+	public ArrayList<ArrayList<Integer>> applatirMap()
+	{
+		ArrayList<ArrayList<Integer>> indicesMap = new ArrayList<>();
+		
+		for (int i=0 ; i < this.getNbQuartiers() ; i=i+1)
+		{
+			Quartier q = this.getQuartier(i);
+			int nbLignes = q.getNbLignes();
+			int nbColonnes = q.getNbColonnes();
+			
+			for (int j=0 ; j<nbLignes ; j=j+1)
+			{
+				for (int k=0 ; k<nbColonnes ; k=k+1)
+				{
+					ArrayList<Integer> indicesCase = new ArrayList<>(Arrays.asList(i, j, k));
+					indicesMap.add(indicesCase);
+				}
+			}
+		}
+		return indicesMap;
+	}
+		
 	// ---------------------------------------------------------------------------
 	
 	public String toString()
@@ -56,5 +82,7 @@ public class Map
 		s = s + "";
 		return s;
 	}
+	
+	
 
 }

@@ -61,6 +61,21 @@ public class Case
 	
 	// -------------------------------------------------------------------------------------------------
 	
+	public Bloc recupererDernierBloc()
+	{
+		int nbBlocsCase = this.getListeBlocs().size();
+		{
+			if (nbBlocsCase == 0)
+			{
+				return null;
+			}
+			else 
+			{
+				return this.getListeBlocs().get(nbBlocsCase - 1); 
+			}
+		}
+	}
+	
 	public String toString()
 	{
 		return "[" + String.valueOf(this.abscisse) + " " + String.valueOf(this.ordonnee) + "]";
