@@ -17,6 +17,7 @@ public class Partie
 		this.listeJoueurs = new ArrayList<>();
 		
 		this.initialiserPioche();
+		this.melangerPioche();
 		this.initialiserJoueurs();
 		this.JouerPartie();
 	}
@@ -176,7 +177,7 @@ public class Partie
 		
 		int j = this.retrouverJoueurCouleurBloc(couleurGagnant);
 		System.out.println(j);
-		System.out.println(listeJoueurs);
+		//System.out.println(listeJoueurs);
 		this.listeJoueurs.get(j).setNbPoints(listeJoueurs.get(j).getNbPoints() + 3);
 	}
 	
@@ -218,11 +219,11 @@ public class Partie
 				
 			}
 			
-			for (int a : lol)
+			/*for (int a : lol)
 			{
 				System.out.print(a);
 			}
-			System.out.println("");
+			System.out.println("")*/;
 		}
 		
 		
@@ -246,15 +247,15 @@ public class Partie
 			{
 				String couleur = dernierBloc.getCouleur();
 				int joueur = this.retrouverJoueurCouleurBloc(couleur);
-				System.out.println(dernierBloc + " " + joueur);
+				//System.out.println(dernierBloc + " " + joueur);
 				lol[joueur] = lol[joueur] + 1;	
 			}
 		}
 		
-		for (int e : lol)
+		/*for (int e : lol)
 		{
 			System.out.print(e);
-		}
+		}*/
 		
 		for (int joueur = 0 ; joueur < this.listeJoueurs.size() ; joueur = joueur + 1)
 		{
@@ -307,9 +308,9 @@ public class Partie
 				System.out.println("--------------------------------------------------------");
 			}
 			
-			//this.compterNombrePointsHauteur();
-			//this.compterNombrePointsPossedeParQuartier();
-			//this.compterNombrePointsPossedeSurMap();
+			this.compterNombrePointsHauteur();
+			this.compterNombrePointsPossedeParQuartier();
+			this.compterNombrePointsPossedeSurMap();
 			
 			for (Joueur j : this.listeJoueurs)
 			{
