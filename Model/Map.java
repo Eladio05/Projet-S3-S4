@@ -5,6 +5,10 @@ import java.util.Arrays;
 
 public class Map
 {
+	/*
+	Cette classe représente une map caractérisée par un nombre de quartier
+	et une liste de quartiers 
+	*/
 	private int nbQuartiers;
 	private Quartier[] listeQuartiers;
 	
@@ -12,6 +16,7 @@ public class Map
 	
 	public Map()
 	{
+		// Constructeur de map. Chaque quartier possède le numéro i 
 		this.nbQuartiers = 6;
 		this.listeQuartiers = new Quartier[this.nbQuartiers];
 	
@@ -25,13 +30,15 @@ public class Map
 	
 	public int getNbQuartiers() 
 	{
-		return this.listeQuartiers.length;
+		// Cette méthode renvoit le nombre de quartiers 
+		return this.nbQuartiers;
 	}
 	
 	// ---------------------------------------------------------------------------
 	
 	public void setQuartier(Quartier q, int numero)
 	{
+		// Cette méthode permet de modifier le quartier d'index "numero" 
 		this.listeQuartiers[numero] = q;
 	}
 	
@@ -39,6 +46,7 @@ public class Map
 	
 	public Quartier getQuartier(int numero)
 	{
+		// Cette méthode permet de récupérer le quartier d'index "numero" 
 		return this.listeQuartiers[numero];
 	}
 	
@@ -46,6 +54,14 @@ public class Map
 	
 	public ArrayList<ArrayList<Integer>> applatirMap()
 	{
+		/* 
+		Cette méthode permet d'applatir la map en matrice en matrice d'entiers 
+		Chaque ligne possède l'indice du quartier, de l'abcisse de la case et de 
+		l'ordonnee de la case.
+		Cette méthode est utile dans le calcul de comptage des points (voir Partie)
+		pour éviter de répéter du code 
+		*/
+		
 		ArrayList<ArrayList<Integer>> indicesMap = new ArrayList<>();
 		
 		for (int i=0 ; i < this.getNbQuartiers() ; i=i+1)
@@ -70,6 +86,7 @@ public class Map
 	
 	public String toString()
 	{
+		// Cette méthode permet d'afficher une map sous forme de chaine de caractères 
 		String s = "";
 		int compteur = 1;
 		

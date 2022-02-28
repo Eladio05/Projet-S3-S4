@@ -1,7 +1,32 @@
-/*     SERT DE BACKUP 
+/*     
+------------------------------  SERT DE BACKUP --------------------------------------------------------------
 
-	 
 
+	public void ajouterPoints(int joueur, int nbPointsAAjouter)
+	{
+		int indiceJoueur = -1; 
+		
+		if (couleurBloc == "Jaune")
+		{
+			indiceJoueur = 0;
+		}
+		else if (couleurBloc == "Violet")
+		{
+			indiceJoueur = 1;
+		}
+		else if (couleurBloc == "Bleu")
+		{
+			indiceJoueur = 2;
+		}
+		else if (couleurBloc == "Orange")
+		{
+			indiceJoueur = 3;
+		}
+		
+		Joueur j = this.listeJoueurs.get(indiceJoueur);
+		j.setNbPoints(j.getNbPoints() + nbPointsAAjouter);	
+	}
+	
 	public void compterNombrePointsHauteur() 
 	{
 		String couleurGagnant="";
@@ -153,10 +178,6 @@
 	
 }
 
-*/
-	
-
-/*  Devrait sauter 
 public int recherchePlusGrand(int[] tableau)
 {
 	int plusGrand = -1;
@@ -169,17 +190,11 @@ public int recherchePlusGrand(int[] tableau)
 	}
 	return plusGrand;
 }
-*/
 
 
-
-	
-	
-	
-	
 // ----------------------------- CODE D'ELIOTT -------------------------------------------------
 	
-/*
+
 	public void compterNombrePointPossede() {
 		for(int i=0;i<m.getListeQuartiers().length;i++) {
 			for(int j=0;j<m.getQuartier(0).getListeCases().length;j++) {
@@ -259,8 +274,3 @@ public int recherchePlusGrand(int[] tableau)
 }
 
 */
-
-
-// 6 quartiers -> 9 cases == 54 cases (q, i, j, blocs)
-
-
