@@ -34,6 +34,26 @@ public class Joueur
 		return listBlocs;
 	}
 	
+	public DeckCarte getListCartes()
+	{
+		return this.listCartes;
+	}
+	
+	public String getPseudo()
+	{
+		return this.pseudo;
+	}
+	
+	public void setNbPoints(int nbPoints)
+	{
+		this.nbPoints = nbPoints;
+	}
+	
+	public int getNbPoints()
+	{
+		return this.nbPoints;
+	}
+	
 	public void jouerCoup(int nbBloc, int nbCarte) 
 	{
 		// Cette méthode permet de jouer un coup (on retire le bloc et la carte des decks et on les sauvegarde) 

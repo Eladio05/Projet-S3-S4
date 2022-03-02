@@ -11,18 +11,16 @@ public class Partie
 	private Map m;
 	private DeckCarte pioche;
 	private ArrayList<Joueur> listeJoueurs;
+	private CompterPoints cp;
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
 	
-	public Partie()
+	public Partie(Map m)
 	{
 		// Constructeur de partie. On initialise la map, la pioche et les joueurs 
-		this.m = new Map(6, 3, 3);	
+		//this.m = new Map(6, 3, 3);
+		this.m = m;
 		this.listeJoueurs = new ArrayList<>();
-		
-		this.initialiserPioche();
-		this.melangerPioche();
-		this.initialiserJoueurs();
 	}
 	
 	// -----------------------------------------------------------------------------------------------------------------------------
@@ -121,8 +119,129 @@ public class Partie
 				
 				Joueur j = new Joueur(pseudo, dc, db);
 				this.listeJoueurs.add(j);
+				this.cp = new CompterPoints(this.m, this.listeJoueurs);
 			}
 		}
-		
 	}
+	
+	public int initialiserNombreManches()
+	{
+		int nbManches = 0;
+		if (this.listeJoueurs.size() == 2 || this.listeJoueurs.size() == 4)
+		{
+			nbManches = 4;
+		}
+		else 
+		{
+			nbManches = 6;
+		}
+
+		return nbManches;
+	}
+	
+
+	public void initialiserCoupJoueur(int indiceJoueur)
+	{
+		Joueur j = this.listeJoueurs.get(indiceJoueur);
+		System.out.println("Au tour de "+j.getPseudo());
+	
+		System.out.print("Choisir la carte à jouer : ");
+		int numeroCarte = new Scanner(System.in).nextInt();
+		Carte c = j.getListCartes().getListCarte().get(numeroCarte);
+		
+		System.out.print("Choisir le bloc à jouer : ");
+		int numeroBloc = new Scanner(System.in).nextInt();
+		Bloc b = j.getListBlocs().recupererBloc(numeroBloc);
+		
+		System.out.print("Choisir le quartier où jouer : ");
+		System.out.println(this.m);
+		int Quartier = new Scanner(System.in).nextInt();
+		m.getListeQuartiers()[Quartier].getListesCases()[c.getAbcisse()][c.getOrdonne()].ajouterBloc(b);
+		
+		this.listeJoueurs.get(indiceJoueur).jouerCoup(numeroBloc, numeroCarte);
+		j.piocher(this.pioche);
+		System.out.println("--------------------------------------------------------");
+	}
+	
+	
+	public void compterPointsManche()
+	{
+		int joueur1 = this.cp.compterNombrePointsHauteur();
+		int joueurs2[] = this.cp.compterNombrePointsPossedeSurMap();
+		int joueurs3[] = this.cp.compterNombrePointsPossedeParQuartier();
+		
+		Joueur gagnantHauteur = this.listeJoueurs.get(joueur1);
+		gagnantHauteur.setNbPoints(gagnantHauteur.getNbPoints() + 3);
+		
+		for (int joueur = 0 ; joueur < this.listeJoueurs.size(); joueur = joueur + 1)
+		{
+			Joueur gagnantPossedeMap = this.listeJoueurs.get(joueur);
+			gagnantPossedeMap.setNbPoints(gagnantPossedeMap.getNbPoints() + joueurs2[joueur]);
+		}
+
+		for (int joueur = 0 ; joueur < this.listeJoueurs.size(); joueur = joueur + 1)
+		{
+			Joueur gagnantPossedeQuartier = this.listeJoueurs.get(joueur);
+			gagnantPossedeQuartier.setNbPoints(gagnantPossedeQuartier.getNbPoints() + joueurs3[joueur]);
+		}
+	}
+	
+	public int rechercheGagnant()
+	{
+		int gagnant = 0;
+		int nbPointsGagnant = 0;
+		int compteurOccurrencesGagnant = 0;
+		
+		for (int indiceJoueur = 0 ; indiceJoueur < this.listeJoueurs.size(); indiceJoueur = indiceJoueur + 1)
+		{
+			Joueur j = this.listeJoueurs.get(indiceJoueur);
+			int nbPointsJoueur = j.getNbPoints();
+			
+			if (nbPointsJoueur > nbPointsGagnant)
+			{
+				gagnant = indiceJoueur;
+				nbPointsGagnant = nbPointsJoueur;
+				compteurOccurrencesGagnant = 1;
+			}
+			else if (nbPointsJoueur == nbPointsGagnant)
+			{
+				compteurOccurrencesGagnant = compteurOccurrencesGagnant + 1;
+			}
+			
+		}
+		
+		if (compteurOccurrencesGagnant > 1)
+		{
+			return -1;
+		}
+		else 
+		{
+			return gagnant;
+		}
+	}
+	
+	public void JouerPartie()
+	{
+		// Cette méthode permet de jouer une Partie entière 
+		int nbManches = this.initialiserNombreManches();
+	
+		for (int i=0 ; i < nbManches ; i=i+1)
+		{
+			for(int indiceJoueur = 0 ; indiceJoueur < this.listeJoueurs.size(); indiceJoueur = indiceJoueur + 1) 
+			{
+				this.initialiserCoupJoueur(indiceJoueur);
+			}
+			
+			this.compterPointsManche();
+			
+			for (Joueur j : this.listeJoueurs)
+			{
+				System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
+			}
+			
+			
+		}
+	}
+	
+	
 }

@@ -54,6 +54,12 @@ public class DeckBlocs
 		return this.couleur;
 	}
 	
+	public Bloc recupererBloc(int numeroBloc)
+	{
+		// Cette methode permet de récupérer le bloc d'indice "numeroBloc" 
+		return this.listeBlocs[numeroBloc];
+	}
+	
 	public Bloc retirerBloc(int numeroBloc)
 	{
 		// Cette méthode permet de retirer le bloc d'indice "numeroBloc" 

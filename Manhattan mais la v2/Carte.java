@@ -14,6 +14,16 @@ public class Carte
 		this.abscisse = abscisse;
 		this.ordonne = ordonne;
 	}
+	
+	public int getAbcisse()
+	{
+		return this.abscisse;
+	}
+	
+	public int getOrdonne()
+	{
+		return this.ordonne;
+	}
 
 	public String toString() 
 	{

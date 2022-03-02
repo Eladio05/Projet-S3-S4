@@ -90,7 +90,6 @@ public class CompterPoints
 			String couleur = dernierBloc.getCouleur();
 			int joueur = this.retrouverJoueurCouleurBloc(couleur);
 			listePointsJoueurs[joueur] = listePointsJoueurs[joueur] + 1;
-			
 		}
 
 		return listePointsJoueurs;
