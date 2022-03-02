@@ -14,25 +14,30 @@ public class CompterPoints
 		this.listeJoueurs = listeJoueurs;
 	}
 	
-	public Integer[] convertirTableauEnWrapper(int[] tab)
+	public int recupererIndice(int[] tab, int nb)
 	{
-		//Cette methode permet de convertir un int[] et Integer[] 
-		//Celui ci étant nécessaire pour récupérer l'indice de l'element le plus grand
-		//utilisé dans compterNombrePointsPossedeParQuartier
+		int compteurOccurrencesNb = 0;
+		int indiceNb = 0;
 		
-		
-		Integer[] tab2 = new Integer[tab.length];
-		int compteur = 0;
-		
-		for (int element : tab)
+		for (int i=0 ; i < tab.length ; i=i+1)
 		{
-			tab2[compteur] = Integer.valueOf(element);
-			compteur = compteur + 1;
+			if (tab[i] == nb)
+			{
+				indiceNb = i;
+				compteurOccurrencesNb = compteurOccurrencesNb + 1;
+			}
 		}
 		
-		return tab2;
+		if (compteurOccurrencesNb > 1)
+		{
+			return -1;
+		}
+		else 
+		{
+			return indiceNb;
+		}
 	}
-	
+
 	public int retrouverJoueurCouleurBloc(String couleur)
 	{
 		/* 
@@ -40,7 +45,7 @@ public class CompterPoints
 		dont les blocs sont de couleur "couleur"
 		*/
 		
-		int indice = 0;
+		int indice = -1;
 		String couleurJoueur = "";
 		int compteur = 0;
 		
@@ -98,8 +103,13 @@ public class CompterPoints
 		
 		for (String couleur : couleurDerniersBlocsMap[numeroQuartier])
 		{
-			int joueur = this.retrouverJoueurCouleurBloc(couleur);
-			listePointsJoueurs[joueur] = listePointsJoueurs[joueur] + 2;
+			int gagnant = this.retrouverJoueurCouleurBloc(couleur);
+			
+			if (gagnant != -1)
+			{
+				listePointsJoueurs[gagnant] = listePointsJoueurs[gagnant] + 2;
+			}
+			
 		}
 		
 		return listePointsJoueurs;
@@ -112,14 +122,18 @@ public class CompterPoints
 		{
 			
 			int[] nbBlocsPossedeParJoueurEtQuartier = this.compterNbBlocsPossedeParJoueurEtQuartier(numeroQuartier);
-			Integer[] wrapperNbBlocsPossedeParJoueurEtQuartier  = this.convertirTableauEnWrapper(nbBlocsPossedeParJoueurEtQuartier);
 			
 			int nbPossedeMaximum = Arrays.stream(nbBlocsPossedeParJoueurEtQuartier).max().getAsInt();
 			
 			if (nbPossedeMaximum != 0)
 			{
-				int indiceMax = Arrays.asList(wrapperNbBlocsPossedeParJoueurEtQuartier).indexOf(nbPossedeMaximum);
-				listePointsJoueurs[indiceMax] = listePointsJoueurs[indiceMax] + 2;	
+				int indiceMax = this.recupererIndice(nbBlocsPossedeParJoueurEtQuartier, nbPossedeMaximum);
+				
+				if (indiceMax != -1)
+				{
+					listePointsJoueurs[indiceMax] = listePointsJoueurs[indiceMax] + 2;	
+				}
+	
 			}
 			
 		}
