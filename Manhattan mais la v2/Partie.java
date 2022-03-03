@@ -220,9 +220,11 @@ public class Partie
 		}
 	}
 	
-	public void JouerPartie()
+	public void jouerPartie()
 	{
 		// Cette méthode permet de jouer une Partie entière 
+		
+		/*
 		int nbManches = this.initialiserNombreManches();
 	
 		for (int i=0 ; i < nbManches ; i=i+1)
@@ -239,7 +241,27 @@ public class Partie
 				System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
 			}
 			
-			
+		}
+		*/
+		
+		// TEST
+		this.compterPointsManche();
+		
+		for (Joueur j : this.listeJoueurs)
+		{
+			System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
+		}
+		
+		
+		int gagnant = this.rechercheGagnant();
+		
+		if (gagnant == -1)
+		{
+			System.out.println("au moins 2 joueurs ont le meme nombre de points donc personne ne gagne");
+		}
+		else 
+		{
+			System.out.println("le joueur" + this.listeJoueurs.get(gagnant).getPseudo() + " a gagne");
 		}
 	}
 	

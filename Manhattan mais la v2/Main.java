@@ -151,27 +151,28 @@ public class Main
 		
 		m.getListeQuartiers()[2].getListesCases()[0][1].ajouterBloc(new Bloc("Bleu", 1));
 		m.getListeQuartiers()[3].getListesCases()[1][0].ajouterBloc(new Bloc("Violet", 1));
-		m.getListeQuartiers()[1].getListesCases()[1][1].ajouterBloc(new Bloc("Jaune", 1)); //OSEF
-		m.getListeQuartiers()[0].getListesCases()[0][0].ajouterBloc(new Bloc("Bleu", 1)); //OSEF
+		//m.getListeQuartiers()[1].getListesCases()[1][1].ajouterBloc(new Bloc("Jaune", 1)); //OSEF
+		//m.getListeQuartiers()[0].getListesCases()[0][0].ajouterBloc(new Bloc("Bleu", 1)); //OSEF
 		
-		m.getListeQuartiers()[3].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 3)); //OSEF
-		m.getListeQuartiers()[1].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 2));
+		//m.getListeQuartiers()[3].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 3)); //OSEF
+		//m.getListeQuartiers()[1].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 2));
 		m.getListeQuartiers()[5].getListesCases()[1][2].ajouterBloc(new Bloc("Jaune", 4));
 		m.getListeQuartiers()[5].getListesCases()[2][1].ajouterBloc(new Bloc("Jaune", 4));
 		
-		m.getListeQuartiers()[0].getListesCases()[2][2].ajouterBloc(new Bloc("Orange", 2));
-		m.getListeQuartiers()[3].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 3));
+		//m.getListeQuartiers()[0].getListesCases()[2][2].ajouterBloc(new Bloc("Orange", 2));
+		//m.getListeQuartiers()[3].getListesCases()[1][2].ajouterBloc(new Bloc("Orange", 3));
 		m.getListeQuartiers()[2].getListesCases()[2][1].ajouterBloc(new Bloc("Bleu", 1));
-		m.getListeQuartiers()[0].getListesCases()[0][0].ajouterBloc(new Bloc("Orange", 2));
+		//m.getListeQuartiers()[0].getListesCases()[0][0].ajouterBloc(new Bloc("Orange", 2));
 		
-		m.getListeQuartiers()[5].getListesCases()[0][1].ajouterBloc(new Bloc("Orange", 2));
+		//m.getListeQuartiers()[5].getListesCases()[0][1].ajouterBloc(new Bloc("Orange", 2));
 		m.getListeQuartiers()[4].getListesCases()[1][0].ajouterBloc(new Bloc("Jaune", 4));
 		m.getListeQuartiers()[1].getListesCases()[1][1].ajouterBloc(new Bloc("Violet", 4));
+		
 		
 		Partie p1 = new Partie(m);
 		p1.initialiserPioche();
 		p1.melangerPioche();
 		p1.initialiserJoueurs();
-		p1.compterPointsManche();
+		p1.jouerPartie();
 	}
 }
