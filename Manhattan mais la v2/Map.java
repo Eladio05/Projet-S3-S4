@@ -13,7 +13,7 @@ public class Map
 	private int nbQuartiers;
 	private Quartier[] listeQuartiers;
 	
-	// ---------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
 	
 	public Map(int nbQuartiers, int nbLignes, int nbColonnes)
 	{
@@ -27,21 +27,27 @@ public class Map
 		}
 	}
 	
-	// ---------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
 	
 	public int getNbQuartiers() 
 	{
-		// Cette méthode renvoit le nombre de quartiers 
+		// Cette méthode permet de récupérer le nombre de quartiers 
 		return this.nbQuartiers;
 	}
 	
+	// -----------------------------------------------------------------------------------------------
+	
 	public Quartier[] getListeQuartiers()
 	{
+		// Cette méthode permet de récupérer la liste des quartiers 
 		return this.listeQuartiers;
 	}
 	
+	// -----------------------------------------------------------------------------------------------
+	
 	public ArrayList<Bloc> recupererListeDerniersBlocsMap()
 	{
+		// Cette méthode permet de récupérer la liste des derniers blocs de chaque case de la map
 		ArrayList<Bloc> listeDerniersBlocsMap = new ArrayList<>();
 		for (Quartier q : this.listeQuartiers)
 		{
@@ -62,9 +68,15 @@ public class Map
 		return listeDerniersBlocsMap;
 	}
 	
+	// -----------------------------------------------------------------------------------------------
+	
 	
 	public String[][] recupererCouleurDerniersBlocsMap()
 	{
+		/* 
+		Cette méthode permet de récupérer la liste des couleurs des derniers blocs de chaque case de la map
+		(Chaque ligne possède les couleurs des derniers blocs par quartier)
+		*/
 		int nbCases = this.listeQuartiers[0].getNbLignes() * this.listeQuartiers[0].getNbColonnes();
 		String[][] couleurDerniersBlocsMap = new String[this.nbQuartiers][nbCases];
 		int compteurQuartier = 0;
@@ -94,8 +106,16 @@ public class Map
 		return couleurDerniersBlocsMap;
 	}
 	
+	// -----------------------------------------------------------------------------------------------
+	
 	public Bloc recupererBlocPlusHautMap()
 	{
+		/* 
+		Cette méthode permet de récupérer le premier bloc rencontré de la taille la plus haute de la map
+		Par exemple, si il n'y a aucun bloc de taille 4, la taille la plus haute de la map vaut 3 
+		et cette méthode renvoit le premier bloc rencontré de taille 3 
+		*/
+		
 		Bloc blocLePlusHaut = null;
 		int tailleBlocLePlusHaut = -1;
 		ArrayList<Bloc> listeDerniersBlocsMap = this.recupererListeDerniersBlocsMap();
@@ -114,10 +134,7 @@ public class Map
 		return blocLePlusHaut;	
 	}
 	
-	
-	
-	
-	// ---------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
 	
 	public String toString()
 	{

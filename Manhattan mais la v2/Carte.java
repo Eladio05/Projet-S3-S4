@@ -6,7 +6,7 @@ public class Carte
 	private int abscisse;
 	private int ordonne;
 	
-	// -------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	public Carte(int abscisse, int ordonne) 
 	{
@@ -15,15 +15,23 @@ public class Carte
 		this.ordonne = ordonne;
 	}
 	
-	public int getAbcisse()
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
+	public int getAbscisse()
 	{
+		// Cette méthode permet de récupérer l'abcisse d'une carte 
 		return this.abscisse;
 	}
 	
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
 	public int getOrdonne()
 	{
+		// Cette méthode permet de récupérer l'ordonnée d'une carte 
 		return this.ordonne;
 	}
+	
+	// -----------------------------------------------------------------------------------------------------------------------------
 
 	public String toString() 
 	{

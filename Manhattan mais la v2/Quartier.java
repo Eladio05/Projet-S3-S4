@@ -3,8 +3,8 @@
 public class Quartier 
 {
 	/* 
-	Cette classe représente un quartier caractérisé par un nombre de lignes 
-	et de colonnes (par défaut 3;3) et une matrice de Cases 
+	Cette classe représente un quartier caractérisé par un nombre
+	de lignes et de colonnes (par défaut 3;3) et une matrice de Cases 
 	*/
 	
 	private int nbLignes;
@@ -15,7 +15,10 @@ public class Quartier
 	
 	public Quartier(int nbLignes, int nbColonnes)
 	{
-		// Constructeur de Quartier. Chaque case possède les coordonnées (i, j) 
+		/* 
+		Constructeur de Quartier. Chaque case 
+		possède les coordonnées (i, j) 
+		*/
 		this.nbLignes = nbLignes;
 		this.nbColonnes = nbColonnes;
 		this.listeCases = new Case[this.nbLignes][this.nbColonnes];
@@ -51,6 +54,7 @@ public class Quartier
 	
 	public Case[][] getListesCases()
 	{
+		// Cette méthode permet de récupérer la liste des cases 
 		return this.listeCases;
 	}
 	
@@ -58,7 +62,11 @@ public class Quartier
 	
 	public String toString()
 	{
-		// Cette méthode permet de représenter un quartier sous forme de chaine de caractères 
+		// 
+		/* 
+		Cette méthode permet de représenter un quartier 
+		sous forme de chaine de caractères 
+		*/
 		String s = "[\n";
 		
 		for (int i=0 ; i < this.nbLignes ; i=i+1)

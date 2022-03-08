@@ -27,6 +27,8 @@ public class DeckCarte {
 		return listCarte;
 	}
 	
+	// ----------------------------------------------------------------------------------
+	
 	public String toString() {
 		// Cette méthode d'afficher une liste de cartes sous forme de chaine de caractères 
 		String s = " [ ";

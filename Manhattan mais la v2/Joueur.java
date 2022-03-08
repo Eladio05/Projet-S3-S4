@@ -28,31 +28,47 @@ public class Joueur
 		this.blocSauvegarde = null;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public DeckBlocs getListBlocs() 
 	{
 		// Cette méthode permet de récupérer le deck de blocs du joueur 
 		return listBlocs;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public DeckCarte getListCartes()
 	{
+		// Cette méthode permet de récupérer le deck de cartes du joueur 
 		return this.listCartes;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public String getPseudo()
 	{
+		// Cette méthode permet de récupérer le pseudo du joueur
 		return this.pseudo;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public void setNbPoints(int nbPoints)
 	{
+		// Cette méthode permet de modifier le nombre de points d'un joueur 
 		this.nbPoints = nbPoints;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------
+	
 	public int getNbPoints()
 	{
+		// Cette méthode permet de récupérer le nombre de points d'un joueur
 		return this.nbPoints;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------
 	
 	public void jouerCoup(int nbBloc, int nbCarte) 
 	{

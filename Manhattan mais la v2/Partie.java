@@ -18,7 +18,6 @@ public class Partie
 	public Partie(Map m)
 	{
 		// Constructeur de partie. On initialise la map, la pioche et les joueurs 
-		//this.m = new Map(6, 3, 3);
 		this.m = m;
 		this.listeJoueurs = new ArrayList<>();
 	}
@@ -66,6 +65,7 @@ public class Partie
 	
 	public String initialiserCouleursJoueur(int numeroJoueur)
 	{
+		// Cette méthode permet d'initialiser la couleur du joueur d'indice "numeroJoueur"
 		String couleur = "";
 		if (numeroJoueur == 0)
 		{
@@ -87,8 +87,11 @@ public class Partie
 		
 	}
 	
-	public DeckCarte initialiserDeckCarteJoueur(String couleur, String pseudo)
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
+	public DeckCarte initialiserDeckCarteJoueur(String couleur)
 	{
+		// Cette méthode permet d'initialiser le deck de cartes du joueur en fonction de sa couleur 
 		ArrayList<Carte> lc = new ArrayList<>();
 		
 		for (int c=0 ; c<4 ; c=c+1)
@@ -98,6 +101,8 @@ public class Partie
 		}
 		return new DeckCarte(lc);
 	}
+	
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	public void initialiserJoueurs()
 	{
@@ -115,7 +120,7 @@ public class Partie
 				String couleur = this.initialiserCouleursJoueur(i);
 				
 				DeckBlocs db = new DeckBlocs(couleur);
-				DeckCarte dc = this.initialiserDeckCarteJoueur(couleur, pseudo);
+				DeckCarte dc = this.initialiserDeckCarteJoueur(couleur);
 				
 				Joueur j = new Joueur(pseudo, dc, db);
 				this.listeJoueurs.add(j);
@@ -124,8 +129,11 @@ public class Partie
 		}
 	}
 	
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
 	public int initialiserNombreManches()
 	{
+		// Cette méthode permet d'initialiser le nombre de manches d'une partie 
 		int nbManches = 0;
 		if (this.listeJoueurs.size() == 2 || this.listeJoueurs.size() == 4)
 		{
@@ -139,9 +147,11 @@ public class Partie
 		return nbManches;
 	}
 	
-
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
 	public void initialiserCoupJoueur(int indiceJoueur)
 	{
+		// Cette méthode permet au joueur de jouer un coup 
 		Joueur j = this.listeJoueurs.get(indiceJoueur);
 		System.out.println("Au tour de "+j.getPseudo());
 	
@@ -156,16 +166,18 @@ public class Partie
 		System.out.print("Choisir le quartier où jouer : ");
 		System.out.println(this.m);
 		int Quartier = new Scanner(System.in).nextInt();
-		m.getListeQuartiers()[Quartier].getListesCases()[c.getAbcisse()][c.getOrdonne()].ajouterBloc(b);
+		m.getListeQuartiers()[Quartier].getListesCases()[c.getAbscisse()][c.getOrdonne()].ajouterBloc(b);
 		
 		this.listeJoueurs.get(indiceJoueur).jouerCoup(numeroBloc, numeroCarte);
 		j.piocher(this.pioche);
 		System.out.println("--------------------------------------------------------");
 	}
 	
+	// -----------------------------------------------------------------------------------------------------------------------------
 	
 	public void compterPointsManche()
 	{
+		// Cette méthode permet de compter le nombre de points de chaque joueur sur une manche 
 		int joueur1 = this.cp.compterNombrePointsHauteur();
 		int joueurs2[] = this.cp.compterNombrePointsPossedeSurMap();
 		int joueurs3[] = this.cp.compterNombrePointsPossedeParQuartier();
@@ -186,8 +198,11 @@ public class Partie
 		}
 	}
 	
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
 	public int rechercheGagnant()
 	{
+		// Cette méthode permet de chercher le gagnant d'une partie (renvoit -1 en cas d'égalité) 
 		int gagnant = 0;
 		int nbPointsGagnant = 0;
 		int compteurOccurrencesGagnant = 0;
@@ -220,6 +235,8 @@ public class Partie
 		}
 	}
 	
+	// -----------------------------------------------------------------------------------------------------------------------------
+	
 	public void jouerPartie()
 	{
 		// Cette méthode permet de jouer une Partie entière 
@@ -251,6 +268,7 @@ public class Partie
 		{
 			System.out.println("le joueur " + j.getPseudo() + " possede " + j.getNbPoints() + " points ");
 		}
+		// FIN DU TEST 
 		
 		
 		int gagnant = this.rechercheGagnant();

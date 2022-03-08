@@ -5,17 +5,32 @@ import java.util.Arrays;
 
 public class CompterPoints 
 {
+	/* 
+	Cette classe représente le comptage de points. Celle ci est caractérisée 
+	par une map et la liste des joueurs 
+	 */
+	
 	private Map m;
 	private ArrayList<Joueur> listeJoueurs;
 	
+	// ----------------------------------------------------------------------------------------------------------------------
+	
 	public CompterPoints(Map m, ArrayList<Joueur> listeJoueurs)
 	{
+		// Constructeur de CompterPoints. On initialiser la map et la liste de joueurs 
 		this.m = m;
 		this.listeJoueurs = listeJoueurs;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------------
+	
 	public int recupererIndice(int[] tab, int nb)
 	{
+		/* 
+		Cette méthode permet de récupérer l'indice ou se situe nb dans tab 
+		(si nb est présent plusieurs fois, on renvoit -1) 
+		 */
+		
 		int compteurOccurrencesNb = 0;
 		int indiceNb = 0;
 		
@@ -37,6 +52,8 @@ public class CompterPoints
 			return indiceNb;
 		}
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------------
 
 	public int retrouverJoueurCouleurBloc(String couleur)
 	{
@@ -52,7 +69,7 @@ public class CompterPoints
 		for (Joueur j : this.listeJoueurs)
 		{
 			couleurJoueur = j.getListBlocs().getCouleur();
-			if (couleur == couleurJoueur)
+			if (couleur.equals(couleurJoueur))
 			{
 				indice = compteur;
 			}
@@ -62,8 +79,12 @@ public class CompterPoints
 		return indice; 
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------------
+	
 	public int compterNombrePointsHauteur() 
 	{
+		// Cette méthode permet de récupérer l'indice du joueur qui possède le bloc le plus haut 
+		
 		Bloc blocLePlusHaut = this.m.recupererBlocPlusHautMap();
 		int gagnant = -1;
 		if (blocLePlusHaut != null)
@@ -76,10 +97,12 @@ public class CompterPoints
 		//this.p.getListeJoueurs().get(j).setNbPoints(this.p.getListeJoueurs().get(j).getNbPoints() + 3);
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------------
+	
 	public int[] compterNombrePointsPossedeSurMap()
 	{
-		//Cette méthode permet d'ajouter 1 point a chaque fois qu'un joueur
-		//possède un bloc sur toute la map 
+	
+		//Cette méthode renvoit la liste des points dans laquelle on ajoute 1 point au joueur pour chaque bloc possédé 
 		 
 		int[] listePointsJoueurs = new int[] {0, 0, 0, 0};
 		
@@ -100,8 +123,14 @@ public class CompterPoints
 		return listePointsJoueurs;
 	}
 	
+	// ----------------------------------------------------------------------------------------------------------------------
+	
 	public int[] compterNbBlocsPossedeParJoueurEtQuartier(int numeroQuartier)
-	{                                       //2  3  1  1
+	{ 
+		/* 
+		Cette méthode renvoit la liste des points dans laquelle on ajoute 
+		2 points au joueur qui possède le quartier "numeroQuartier
+		 */
 		int[] listePointsJoueurs = new int[] {0, 0, 0, 0};
 		String[][] couleurDerniersBlocsMap = this.m.recupererCouleurDerniersBlocsMap();
 		
@@ -118,9 +147,15 @@ public class CompterPoints
 		
 		return listePointsJoueurs;
 	}
+	
+	// ----------------------------------------------------------------------------------------------------------------------
 
 	public int[] compterNombrePointsPossedeParQuartier()
 	{
+		/* 
+		Cette méthode renvoit la liste des points dans laquelle on aoute 2 points
+		 à chaque fois qu'un joueur possède un quartier 
+		*/
 		int[] listePointsJoueurs = new int[] {0, 0, 0, 0};
 		for (int numeroQuartier = 0 ; numeroQuartier < this.m.getNbQuartiers() ; numeroQuartier = numeroQuartier + 1)
 		{

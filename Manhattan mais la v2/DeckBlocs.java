@@ -3,18 +3,22 @@
 public class DeckBlocs 
 {
 	/* 
-    Cette classe représente la liste des blocs d'un joueur. Elle est caractérisée par une liste de blocs, le nombre
+    Cette classe représente la liste des blocs d'un joueur. 
+    Elle est caractérisée par une liste de blocs, le nombre
 	de blocs et la couleur des blocs
 	*/
 	private Bloc[] listeBlocs;
 	private int nbBlocs;
 	private String couleur;
 	
-	// ----------------------------------------------------------------------------------------------------------------
+	// ---------------------------------------------------------
 	
 	public DeckBlocs(String couleur)
 	{
-		// Constructeur de DeckBlocs. On crée les 24 blocs de chaque taille et couleur 
+		/* 
+		Constructeur de DeckBlocs. On crée
+		les 24 blocs de chaque taille et couleur 
+		*/
 		this.nbBlocs = 24;
 		this.listeBlocs = new Bloc[this.nbBlocs];
 		
@@ -48,21 +52,36 @@ public class DeckBlocs
 		
 	}  
 	
+	// ---------------------------------------------------------
+	
 	public String getCouleur()
 	{
-		// Cette méthode permet de récupérer la couleur du deck de blocs 
+		/* 
+		Cette méthode permet de récupérer la couleur 
+		du deck de blocs 
+		*/
 		return this.couleur;
 	}
 	
+	// ---------------------------------------------------------
+	
 	public Bloc recupererBloc(int numeroBloc)
 	{
-		// Cette methode permet de récupérer le bloc d'indice "numeroBloc" 
+		/*
+		Cette methode permet de récupérer 
+		le bloc d'indice "numeroBloc" 
+		*/
 		return this.listeBlocs[numeroBloc];
 	}
 	
+	// ---------------------------------------------------------
+	
 	public Bloc retirerBloc(int numeroBloc)
 	{
-		// Cette méthode permet de retirer le bloc d'indice "numeroBloc" 
+		/*
+		Cette méthode permet de retirer le 
+		bloc d'indice "numeroBloc" 
+		*/
 		Bloc[] tab = new Bloc[this.nbBlocs - 1];
 		Bloc b = null;
 		
@@ -94,12 +113,14 @@ public class DeckBlocs
 		
 	}
 	
-	// ----------------------------------------------------------------------------------------------------------------
-	
+	// ---------------------------------------------------------
 	
 	public void ajouterBloc(Bloc b)
 	{
-		// Cette méthode permet d'ajouter un bloc à la fin de la liste des blocs 
+		/* 
+	    Cette méthode permet d'ajouter un bloc 
+		à la fin de la liste des blocs 
+		*/
 		Bloc[] tab = new Bloc[this.nbBlocs + 1];
 		for (int i=0 ; i < this.nbBlocs ; i=i+1)
 		{
@@ -109,14 +130,15 @@ public class DeckBlocs
 		this.listeBlocs = tab;
 		this.nbBlocs = this.nbBlocs + 1;
 	}
-	
 		
-	// ----------------------------------------------------------------------------------------------------------------
-	
+	// ---------------------------------------------------------
 	
 	public String toString()
 	{
-		// Cette méthode permet d'afficher des blocs sous forme de chaine de caractères 
+		/* 
+		Cette méthode permet d'afficher des blocs 
+		sous forme de chaine de caractères 
+		*/
 		String s = "[ ";
 		int compteur = 0;
 		
